@@ -1,14 +1,21 @@
 package com.test.responsive
 
+import android.graphics.Point
 import android.os.Bundle
+import android.util.DisplayMetrics
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu
 import android.view.MenuItem
+import com.test.responsive.util.ScreenUtil
 
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    override fun onResume() {
+        super.onResume()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
