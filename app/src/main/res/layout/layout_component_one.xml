@@ -11,14 +11,14 @@
             android:layout_height="match_parent"
             android:background="@color/colorAccent">
 
-        <TextView
+        <com.test.responsive.widget.CustomTextView
                 android:id="@+id/testViewOne"
                 android:text="TEST One"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:autoSizeTextType="uniform"/>
+                android:background="@color/cardview_dark_background"/>
 
-        <TextView
+        <com.test.responsive.widget.CustomTextView
                 android:id="@+id/testViewTwo"
                 android:text="TEST Two"
                 android:layout_width="wrap_content"
