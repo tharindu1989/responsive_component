@@ -23,11 +23,12 @@ class ComponentOne @JvmOverloads constructor(
     init {
         LayoutInflater.from(context).inflate(R.layout.layout_component_one, this, true)
 
-        wrapperView.setVerticalWeight(10)
+        wrapperView.setVerticalWeight(25)
         wrapperView.setHorizontalWeight(80)
-        testViewOne.setTextFont(5)
-        testViewTwo.setTextFont(5)
-      //  testViewOne.setPadding(0,0,0,0)
+        testViewOne.setTextFont(10)
+        testViewTwo.setTextFont(10)
+        testViewThree.setTextFont(5)
+        //  testViewOne.setPadding(0,0,0,0)
 
         //testViewOne.setTextFont(1)
 

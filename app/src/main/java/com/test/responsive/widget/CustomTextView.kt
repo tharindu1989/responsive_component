@@ -19,8 +19,6 @@ import androidx.annotation.NonNull
 import android.R.attr.top
 
 
-
-
 /**
  * Created By Tharindu on 8/1/2019
  *
@@ -55,34 +53,10 @@ class CustomTextView @JvmOverloads constructor(context: Context, attrs: Attribut
         setMeasuredDimension(mBounds.width() + 1, -mBounds.top + 1)
     }
 
-
-    private fun measureHeight(text: String, measureWidth: Int): Int {
-        val textView = TextView(context)
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-        textView.text = text
-        textView.measure(measureWidth, 0)
-        return textView.measuredHeight
-    }
-
-    private fun getAdditionalPadding(): Int {
-
-        val textView = TextView(context)
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_PX, textSize)
-        textView.setLines(1)
-        textView.measure(0, 0)
-
-        val measureHeight = textView.measuredHeight
-        if (measureHeight > textSize)
-            mAdditionalPadding = (measureHeight - textSize).toInt()
-
-        Log.e("LOG", "Padding $mAdditionalPadding measure height : $measureHeight")
-        return mAdditionalPadding
-    }
-
     private fun calculateTextParams(): String {
         val text = text.toString()
         val textLength = text.length
-        mPaint.setTextSize(textSize)
+        mPaint.textSize = textSize
         mPaint.getTextBounds(text, 0, textLength, mBounds)
         if (textLength == 0) {
             mBounds.right = mBounds.left
@@ -92,14 +66,12 @@ class CustomTextView @JvmOverloads constructor(context: Context, attrs: Attribut
 
     fun setTextFont(weight: Int) {
         val screenHeight = ScreenUtil.height.toFloat()
-        val fontSize: Float = (screenHeight / 100) * weight
-        //Log.e("FONT", "$fontSize")
-        //Log.e("FONT", "${this.lineHeight}")
-        // Log.e("FONT", "${fontSize / resources.displayMetrics.density}")
-        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, fontSize / resources.displayMetrics.density)
-        // this.setSingleLine(true)
-        // this.includeFontPadding = false
+        val height: Float = (screenHeight / 100) * weight
+        val density = resources.displayMetrics.density - 0.5f
+        this.setTextSize(TypedValue.COMPLEX_UNIT_SP, height / density)
 
+        Log.e("DENSITY", "${density}")
+        Log.e("FONT SIZE", "${height / density}")
     }
 
     override fun setText(text: CharSequence?, type: BufferType?) {
